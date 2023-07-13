@@ -1,7 +1,11 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class VideoStore {
-    private ArrayList<Video> store;
+    ArrayList<Video> store;
+    VideoStore(){
+        this.store = new ArrayList<>();
+    }
     public void addVideo(String name){
         Video video = new Video(name);
         store.add(video);
@@ -11,6 +15,7 @@ public class VideoStore {
 
     public Video getVideo(String name){
         for(Video video : store){
+            System.out.println(video.getName());
             if(video.getName().equals(name)) return video;
         }
         return null;
@@ -26,7 +31,7 @@ public class VideoStore {
         System.out.println("Video \""+name+"\" Returned successfully");
 
     }
-    public void receiveRating(String name, int rating){
+    public void   receiveRating(String name, int rating){
         Video video = getVideo(name);
         video.receiveRating(rating);
         System.out.println("Video \""+name+"\" Rated successfully");
